@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helix The Core</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            font-family: 'Share Tech Mono', monospace;
+            color: #00ff00;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .image-container {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+        }
+
+        .title-container {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .title-container h1 {
+            font-size: 3em;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+            animation: glitch 2s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 100% {
+                text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+            }
+            50% {
+                text-shadow: 0 0 15px #00ff00, 0 0 25px #00ff00, 0 0 35px #00ff00;
+            }
+        }
+
+        .quote-container {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            max-width: 800px;
+            border: 1px solid #00ff00;
+            background-color: rgba(0, 255, 0, 0.05);
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+        }
+
+        .quote-container p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 900px;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 25px rgba(0, 255, 0, 0.5);
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .title-container h1 {
+                font-size: 2em;
+                letter-spacing: 3px;
+            }
+
+            .quote-container p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img src="resim.png" alt="Helix Logo">
+    </div>
+
+    <div class="title-container">
+        <h1>Helix The Core</h1>
+    </div>
+
+    <div class="quote-container">
+        <p>"Bir Türk, kendi milletine ihanet edemez. Ederse, en ağır cezayı milletin vicdanında bulur."</p>
+    </div>
+
+    <div class="video-container">
+    <video controls autoplay loop>
+        <source src="video.mp4" type="video/mp4">
+        Tarayıcınız video etiketini desteklemiyor.
+    </video>
+</div>
+</body>
+</html>
