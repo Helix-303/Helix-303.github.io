@@ -121,6 +121,38 @@
                 max-width: 1200px; /* Video sinematik oldu */
                 box-shadow: 0 0 40px rgba(0, 255, 0, 0.6);
             }
+            /* --- MASAÜSTÜ AYARLARI (Yeni Düzenlendi) --- */
+@media (min-width: 1024px) {
+    body {
+        padding: 40px;
+        font-size: 16px; /* Temel font boyutu mobil ile uyumlu */
+    }
+
+    .title-container h1 {
+        font-size: 3em; /* Daha uygun boyut */
+        letter-spacing: 5px;
+    }
+
+    .image-container {
+        max-width: 500px; /* Çok büyük olmasın */
+    }
+
+    .image-container:hover {
+        transform: scale(1.03); /* Hafif hover efekti */
+    }
+
+    .quote-container {
+        max-width: 800px; /* Yazı alanı mobille uyumlu */
+        font-size: 1.1em;
+        padding: 20px;
+    }
+
+    .video-container {
+        max-width: 900px; /* Daha uygun video boyutu */
+        box-shadow: 0 0 25px rgba(0, 255, 0, 0.5);
+    }
+}
+
         }
     </style>
 </head>
