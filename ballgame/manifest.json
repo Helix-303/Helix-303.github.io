@@ -1,0 +1,13 @@
+{
+  "background_color": "#626262",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "helix-303.github",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "ballgame",
+  "start_url": "/",
+  "theme_color": "#626262",
+  "id": "ballgame",
+  "description": "Ball Game by Helix"
+}
