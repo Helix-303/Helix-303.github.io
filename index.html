@@ -20,6 +20,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center; /* Dikey ortalama ekledim */
             padding: 20px;
         }
 
@@ -28,6 +29,7 @@
             max-width: 600px;
             margin-bottom: 30px;
             text-align: center;
+            transition: transform 0.3s ease; /* Animasyon eklendi */
         }
 
         .image-container img {
@@ -51,12 +53,8 @@
         }
 
         @keyframes glitch {
-            0%, 100% {
-                text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
-            }
-            50% {
-                text-shadow: 0 0 15px #00ff00, 0 0 25px #00ff00, 0 0 35px #00ff00;
-            }
+            0%, 100% { text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00; }
+            50% { text-shadow: 0 0 15px #00ff00, 0 0 25px #00ff00, 0 0 35px #00ff00; }
         }
 
         .quote-container {
@@ -88,14 +86,40 @@
             display: block;
         }
 
+        /* --- MOBİL AYARLAR (Aynen Korundu) --- */
         @media (max-width: 768px) {
             .title-container h1 {
                 font-size: 2em;
                 letter-spacing: 3px;
             }
-
             .quote-container p {
                 font-size: 1em;
+            }
+        }
+
+        /* --- MASAÜSTÜ AYARLARI (Yeni Eklendi) --- */
+        @media (min-width: 1024px) {
+            body {
+                padding: 40px; /* Kenar boşlukları ferahladı */
+            }
+            
+            .title-container h1 {
+                font-size: 5em; /* Başlık devleşti */
+                letter-spacing: 10px;
+            }
+
+            .image-container:hover {
+                transform: scale(1.05); /* Mouse gelince büyüme efekti */
+            }
+
+            .quote-container {
+                max-width: 1000px; /* Yazı alanı genişledi */
+                font-size: 1.2em;
+            }
+
+            .video-container {
+                max-width: 1200px; /* Video sinematik oldu */
+                box-shadow: 0 0 40px rgba(0, 255, 0, 0.6);
             }
         }
     </style>
@@ -114,10 +138,10 @@
     </div>
 
     <div class="video-container">
-    <video controls autoplay loop>
-        <source src="video.mp4" type="video/mp4">
-        Tarayıcınız video etiketini desteklemiyor.
-    </video>
-</div>
+        <video controls autoplay loop>
+            <source src="video.mp4" type="video/mp4">
+            Tarayıcınız video etiketini desteklemiyor.
+        </video>
+    </div>
 </body>
 </html>
