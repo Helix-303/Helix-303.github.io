@@ -3,177 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Helix The Core</title>
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <title>Helix's Creations</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg: #121212;
+            --card: #222222;
+            --text: #e0e0e0;
+            --hover: #333333;
+            --accent: #6b6b6b;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+			user-select:none;
+            background: var(--bg); 
+            color: var(--text); 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh; 
         }
 
-        body {
-            background-color: #000000;
-            font-family: 'Share Tech Mono', monospace;
-            color: #00ff00;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center; /* Dikey ortalama ekledim */
-            padding: 20px;
+        .container { 
+            text-align: center; 
+            max-width: 800px; 
+            padding: 2rem; 
         }
 
-        .image-container {
-            width: 100%;
-            max-width: 600px;
-            margin-bottom: 30px;
-            text-align: center;
-            transition: transform 0.3s ease; /* Animasyon eklendi */
+        h1 { 
+            font-size: 3rem; 
+            margin-bottom: 0.5rem; 
+            letter-spacing: 2px;
         }
 
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border: 2px solid #00ff00;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+        p.sub { 
+            color: #888; 
+            margin-bottom: 2.5rem; 
+            font-size: 1.1rem;
         }
 
-        .title-container {
-            text-align: center;
-            margin-bottom: 25px;
+        .btn-group { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 15px; 
+            justify-content: center; 
         }
 
-        .title-container h1 {
-            font-size: 3em;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
-            animation: glitch 2s infinite;
+        /* Buton Tasarımı */
+        .btn { 
+            position: relative; 
+            padding: 12px 24px; 
+            background: var(--card); 
+            color: var(--text); 
+            text-decoration: none; 
+            border-radius: 6px; 
+            font-weight: 500; 
+            transition: all 0.2s ease; 
+            border: 1px solid #333; 
         }
 
-        @keyframes glitch {
-            0%, 100% { text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00; }
-            50% { text-shadow: 0 0 15px #00ff00, 0 0 25px #00ff00, 0 0 35px #00ff00; }
+        .btn:hover { 
+            background: var(--hover); 
+            transform: translateY(-2px); 
+            border-color: var(--accent); 
         }
 
-        .quote-container {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 20px;
-            max-width: 800px;
-            border: 1px solid #00ff00;
-            background-color: rgba(0, 255, 0, 0.05);
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+        /* Hover (Tooltip) Özelliği */
+        .btn::after { 
+            content: attr(data-info); 
+            position: absolute; 
+            bottom: 120%; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            background: #000; 
+            color: #fff; 
+            padding: 6px 12px; 
+            border-radius: 4px; 
+            font-size: 0.85rem; 
+            white-space: nowrap; 
+            opacity: 0; 
+            visibility: hidden; 
+            transition: 0.2s ease; 
+            pointer-events: none; 
+            border: 1px solid #444; 
         }
 
-        .quote-container p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            font-style: italic;
-        }
-
-        .video-container {
-            width: 100%;
-            max-width: 900px;
-            border: 2px solid #00ff00;
-            box-shadow: 0 0 25px rgba(0, 255, 0, 0.5);
-        }
-
-        .video-container video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* --- MOBİL AYARLAR (Aynen Korundu) --- */
-        @media (max-width: 768px) {
-            .title-container h1 {
-                font-size: 2em;
-                letter-spacing: 3px;
-            }
-            .quote-container p {
-                font-size: 1em;
-            }
-        }
-
-        /* --- MASAÜSTÜ AYARLARI (Yeni Eklendi) --- */
-        @media (min-width: 1024px) {
-            body {
-                padding: 40px; /* Kenar boşlukları ferahladı */
-            }
-            
-            .title-container h1 {
-                font-size: 5em; /* Başlık devleşti */
-                letter-spacing: 10px;
-            }
-
-            .image-container:hover {
-                transform: scale(1.05); /* Mouse gelince büyüme efekti */
-            }
-
-            .quote-container {
-                max-width: 1000px; /* Yazı alanı genişledi */
-                font-size: 1.2em;
-            }
-
-            .video-container {
-                max-width: 1200px; /* Video sinematik oldu */
-                box-shadow: 0 0 40px rgba(0, 255, 0, 0.6);
-            }
-            /* --- MASAÜSTÜ AYARLARI (Yeni Düzenlendi) --- */
-@media (min-width: 1024px) {
-    body {
-        padding: 40px;
-        font-size: 16px; /* Temel font boyutu mobil ile uyumlu */
-    }
-
-    .title-container h1 {
-        font-size: 3em; /* Daha uygun boyut */
-        letter-spacing: 5px;
-    }
-
-    .image-container {
-        max-width: 500px; /* Çok büyük olmasın */
-    }
-
-    .image-container:hover {
-        transform: scale(1.03); /* Hafif hover efekti */
-    }
-
-    .quote-container {
-        max-width: 800px; /* Yazı alanı mobille uyumlu */
-        font-size: 1.1em;
-        padding: 20px;
-    }
-
-    .video-container {
-        max-width: 900px; /* Daha uygun video boyutu */
-        box-shadow: 0 0 25px rgba(0, 255, 0, 0.5);
-    }
-}
-
+        .btn:hover::after { 
+            opacity: 1; 
+            visibility: visible; 
+            bottom: 130%; 
         }
     </style>
+	  <style>
+    /* Body ve genel düzen */
+    html, body {
+      height: 100%;
+      margin: 0;
+      background-color: #1f1f1f;
+      font-family: 'Segoe UI', sans-serif;
+      color: #ccc;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      /* Sayfanın tamamını kaplar */
+    }
+
+    /* İçerik alanı (başlık + açıklama + form) */
+    main {
+      flex: 1 0 auto; /* Boşluk kapla, footer'a engel olma */
+      width: 90%;
+      max-width: 480px;
+      margin: 2rem auto 1.5rem;
+      box-sizing: border-box;
+    }
+
+    /* Başlık */
+    #baslik {
+      font-size: 2.5rem; /* PC için büyük */
+      color: #25D366;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    /* Açıklama metni */
+    #yazi {
+      font-size: 1.125rem;
+      color: #ccc;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    /* Form */
+    form {
+      background: #1f1f1f;
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      box-sizing: border-box;
+      animation: glow 5s linear infinite;
+      box-shadow: 0 0 15px #128C7E;
+    }
+
+    input[type="number"],
+    input[type="text"] {
+      width: 100%;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #2b2b2b;
+      color: #fff;
+      font-size: 1.125rem;
+      outline: none;
+      box-sizing: border-box;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    input[type="number"]:focus,
+    input[type="text"]:focus {
+      background-color: #3a3a3a;
+      box-shadow: 0 0 6px #0f0;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 1rem 1.25rem;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: white;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background: linear-gradient(135deg, #128C7E, #25D366);
+      transform: scale(1.03);
+    }
+
+    /* Footer - en altta sabit */
+    footer {
+      flex-shrink: 0;
+      text-align: center;
+      color: darkgray;
+      font-size: 0.9rem;
+      padding: 1.25rem 1rem;
+      text-shadow: 0 0 8px gray;
+    }
+
+    footer a.linkicin {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: #555;
+      transition: color 0.3s, text-decoration-color 0.3s;
+    }
+
+    footer a.linkicin:hover {
+      color: #25D366;
+      text-decoration-color: #25D366;
+    }
+
+    /* Glow animasyonu */
+    @keyframes glow {
+      0% {
+        box-shadow: 0 0 10px #25D366, 0 0 20px #128C7E, 0 0 30px #25D366;
+      }
+      33% {
+        box-shadow: 0 0 10px #128C7E, 0 0 20px #25D366, 0 0 30px #128C7E;
+      }
+      66% {
+        box-shadow: 0 0 10px #25D366, 0 0 20px #25D366, 0 0 30px #128C7E;
+      }
+      100% {
+        box-shadow: 0 0 10px #25D366, 0 0 20px #128C7E, 0 0 30px #25D366;
+      }
+    }
+
+    /* Responsive: Küçük ekranlar için font ve padding küçült */
+    @media (max-width: 480px) {
+      #baslik {
+        font-size: 2rem;
+        margin-bottom: 0.4rem;
+      }
+
+      #yazi {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      form {
+        padding: 1.5rem 1rem;
+      }
+
+      input[type="number"],
+      input[type="text"] {
+        font-size: 1rem;
+        padding: 0.85rem 1rem;
+        margin-bottom: 1rem;
+      }
+
+      input[type="submit"] {
+        font-size: 1.1rem;
+        padding: 0.85rem 1rem;
+      }
+
+      footer {
+        font-size: 0.85rem;
+        padding: 1rem 0.8rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="image-container">
-        <img src="resim.png" alt="Helix Logo">
+    <div class="container">
+        <h1>Helix's Creations</h1>
+        <p class="sub">Projelerim ve Çalışmalarım</p>
+        
+        <div class="btn-group">
+            <a href="https://helix-303.github.io/tarayici" class="btn" data-info="Özel arama motoru aracım">Helix Search Hub</a>
+            <a href="#" class="btn" data-info="Custom Arch Linux projem">NoxiaOS</a>
+            <a href="#" class="btn" data-info="Minecraft ve diğer işler">Oyun Modları</a>
+            <a href="#" class="btn" data-info="3D Tasarımlarım ve Çizimler">Tasarımlar</a>
+        </div>
     </div>
-
-    <div class="title-container">
-        <h1>Helix The Core</h1>
-    </div>
-
-    <div class="quote-container">
-        <p>"Bir Türk, kendi milletine ihanet edemez. Ederse, en ağır cezayı milletin vicdanında bulur."</p>
-    </div>
-
-    <div class="video-container">
-        <video controls autoplay loop>
-            <source src="video.mp4" type="video/mp4">
-            Tarayıcınız video etiketini desteklemiyor.
-        </video>
-    </div>
+	<footer>
+    <p>By Helix | <a class="linkicin" href="https://github.com/Helix-303" target="_blank" rel="noopener noreferrer">Github</a></p>
+  </footer>
 </body>
 </html>
